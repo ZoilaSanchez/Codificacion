@@ -3,20 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto3estructuras;
+package pruebasalgoritomoscom;
 
 /**
  *
  * @author Lopez
  */
-public class Proyecto3estructuras {
+public class Pruebasalgoritomoscom {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Contadorpalabras contador= new Contadorpalabras();
-        contador.verificarcantidad("Casa");
+//        contador1 contador=new contador1();
+        contador.verificarcantidad("casa");
+        arbol x=new arbol();
+       
+        contador.continuar();
+        contador.imprimir();
     }
     
 }
