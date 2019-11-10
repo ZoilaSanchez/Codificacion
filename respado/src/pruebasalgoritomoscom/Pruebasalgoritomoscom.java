@@ -17,11 +17,14 @@ public class Pruebasalgoritomoscom {
     public static void main(String[] args) {
         Contadorpalabras contador= new Contadorpalabras();
 //        contador1 contador=new contador1();
-        contador.verificarcantidad("casa");
-        arbol x=new arbol();
+        contador.verificarcantidad("la comida esta servida");
        
         contador.continuar();
-        contador.imprimir();
+//         contador.letras();
+         System.out.println("");
+//        contador.imprimirArbol();
+         contador.recorridos();
+        
     }
     
 }
