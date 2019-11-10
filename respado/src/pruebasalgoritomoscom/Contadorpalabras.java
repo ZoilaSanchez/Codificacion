@@ -39,6 +39,7 @@ public class Contadorpalabras {
         Map<Character, Integer> numChars = new HashMap<Character, Integer>();
         for (int i = 0; i < cadena.length(); ++i){
                  char charAt = cadena.charAt(i);
+                 letras.add((char)cadena.charAt(i));
             if (!numChars.containsKey(charAt)){//si es nuevo el caracter
                  numChars.put(charAt, 1); //crea unnuevo contador
             }else{ //solo aumenta el contador
@@ -50,7 +51,6 @@ public class Contadorpalabras {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Nodoarbol nodito=new Nodoarbol((char)pair.getKey(),(int) pair.getValue(), null,null);
-            letras.add((char)pair.getKey());
             arreglo.add(new Nodolista(nodito));
 //            System.out.println(arreglo);
             Collections.sort(arreglo); 
@@ -95,7 +95,7 @@ public class Contadorpalabras {
     }
     
     public void imprimirArbol(){
-        
+        System.out.println("Grupo de letras: "+letras);
          arreglo.get(0).getNodo().Inordenaux(arreglo.get(0).getNodo());
          System.out.println("");
 //         Nodoarbol c = arreglo.get(0).getNodo().buscar('a', arreglo.get(0).getNodo());      

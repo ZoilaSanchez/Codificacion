@@ -17,7 +17,7 @@ public class Pruebasalgoritomoscom {
     public static void main(String[] args) {
         Contadorpalabras contador= new Contadorpalabras();
 //        contador1 contador=new contador1();
-        contador.verificarcantidad("abcd e");
+        contador.verificarcantidad("59279025");
        
         contador.continuar();
 //         contador.letras();
