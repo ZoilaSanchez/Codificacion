@@ -31,7 +31,8 @@ public class Contadorpalabras {
     arbol z= new arbol();
     public void verificarcantidad(String original){
         reloj.iniciar();
-        String cadena = original.replace(" ", "§"); //eliminar espacios
+        //個々
+        String cadena = original.replace(" ", "個"); //eliminar espacios
         char [] Arraycadena ;
         char caracter;
         int contador =0;
