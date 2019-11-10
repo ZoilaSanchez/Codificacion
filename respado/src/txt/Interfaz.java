@@ -23,7 +23,6 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz extends javax.swing.JFrame {
 DefaultListModel modelo = new DefaultListModel();
-DefaultListModel modelo2 = new DefaultListModel();
 
     /**
      * Creates new form Interfaz
@@ -62,12 +61,6 @@ DefaultListModel modelo2 = new DefaultListModel();
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jButton2, org.jdesktop.beansbinding.ObjectProperty.create(), jList1, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
 
@@ -80,11 +73,6 @@ DefaultListModel modelo2 = new DefaultListModel();
             }
         });
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(jList2);
 
         jLabel1.setText("Listado de los archivos TXT");
@@ -175,6 +163,8 @@ DefaultListModel modelo2 = new DefaultListModel();
    
     
     public String Lectura_de_equipos(String nombreArchivo){
+        DefaultListModel modelo2 = new DefaultListModel();
+
         String contenido_del_txt_ya_concatenado=" ";
            File archivo;
            FileReader fr;
