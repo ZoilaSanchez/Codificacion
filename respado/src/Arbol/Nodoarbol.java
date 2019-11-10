@@ -58,19 +58,13 @@ public class Nodoarbol {
     }
     
     
-  public void buscar( char z,Nodoarbol nodo)
+  public void buscar( char z,Nodoarbol nodo) //aqui estoy tratando de ver si son 1 o ceros
     {
         Nodoarbol c = null;
-        if(nodo == null){
+        if(nodo == null || nodo.c==z){
             return ;
         }
-        if(nodo.c==z){
-            System.out.println(nodo.f);
-        System.out.print(" frecuencia: "+nodo.f); 
-        System.out.println(" caracter: "+nodo.c);
-            c= nodo;
-            /*return ;*/
-        }
+        System.out.println(nodo.c);
         buscar(z,nodo.getHI());
         buscar(z,nodo.getHD());
        
