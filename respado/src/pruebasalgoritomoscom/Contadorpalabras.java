@@ -97,8 +97,10 @@ public class Contadorpalabras {
     
     public void imprimirArbol(){
         System.out.println("Grupo de letras: "+letras);
-         arreglo.get(0).getNodo().Inordenaux(arreglo.get(0).getNodo());
+         arreglo.get(0).getNodo().Inordenaux(arreglo.get(0).getNodo(), 0);
          System.out.println("");
+         System.out.println("prueba de encriptar ");
+         arreglo.get(0).getNodo().Prueba(arreglo.get(0).getNodo());
 //         Nodoarbol c = arreglo.get(0).getNodo().buscar('a', arreglo.get(0).getNodo());      
     }
     public void letras(){

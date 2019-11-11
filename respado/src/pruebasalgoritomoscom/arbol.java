@@ -115,12 +115,13 @@ public void esvacia(){
      
     public void Inordenaux( Nodo nodo)
     {
+        System.out.println("Me ejecuto?????");
         if(nodo == null){
           
         return;
         }
-        System.out.print(" frecuencia: "+nodo.getV()); 
-        System.out.println(" caracter: "+nodo.getC());
+        System.out.println(" frecuencia jskld jlskfjslk : "+nodo.getV()); 
+//        System.out.println(" caracter: "+nodo.getC());
 //       System.out.println(" caracter: "+nodo.getC() + " frecencia: " + nodo.getV() + " binario "+nodo.getCadena());
         Inordenaux(nodo.getHI());
         Inordenaux(nodo.getHD());

@@ -16,7 +16,8 @@ public class Nodoarbol {
     private int f;
     private char simbolo;
     private Nodoarbol HI,HD;
-
+    private int valor;
+    
     public Nodoarbol(char c, int f, Nodoarbol HI, Nodoarbol HD) {
         this.c = c;
         this.f = f;
@@ -69,17 +70,36 @@ public class Nodoarbol {
         buscar(z,nodo.getHD());
        
     }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
     
     
-    public void Inordenaux( Nodoarbol nodo)
+    public void Inordenaux( Nodoarbol nodo, int valor)
     {
         if(nodo == null){
         return;
         }
-        Inordenaux(nodo.getHI());
+        nodo.setValor(valor);
         System.out.print(" frecuencia: "+nodo.f); 
         System.out.println(" caracter: "+nodo.c);
-        Inordenaux(nodo.getHD());
+        Inordenaux(nodo.getHI(), valor*0);
+        Inordenaux(nodo.getHD(),(valor*0 +1));
     }
     
+    public void Prueba( Nodoarbol nodo){
+        if(nodo == null){
+        return;
+        }
+        System.out.print(" frecuencia : "+nodo.f); 
+        System.out.println(" caracter: "+nodo.c);
+        System.out.println("Numero a valer es " + nodo.getValor());
+        Prueba(nodo.getHI());
+        Prueba(nodo.getHD());
+    }
 }

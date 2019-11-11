@@ -32,7 +32,6 @@ public class Nodolista implements Comparable<Nodolista> {
     
     @Override
 	public String toString() {
-               
 		return this.nodo.getC()+ "  -  " + this.nodo.getF();
 	}
 @Override
