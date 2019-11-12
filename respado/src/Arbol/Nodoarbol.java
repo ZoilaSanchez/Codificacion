@@ -91,19 +91,31 @@ public class Nodoarbol {
         Prueba(nodo.getHI());
         Prueba(nodo.getHD());
     }
+    String x="";
+    public void bus(char v, Nodoarbol nodo){
+        x="";
+        buss(v, nodo);
+        
+    }
     
-    public void bus (char v, Nodoarbol nodo){
+    public void buss (char v, Nodoarbol nodo){
         if(nodo!= null){
-      
+       
         if(v==nodo.getC()){
             
             return; 
+            
         }           
-        
-       System.out.println("n "+nodo.getValor());     
-       bus(v,nodo.getHI());
-       bus(v,nodo.getHD()); 
+        x+=nodo.getValor();
+//       System.out.println("n "+nodo.getValor());     
+       buss(v,nodo.getHI());
+       
+       buss(v,nodo.getHD()); 
          
         }          
+    }
+
+    public String getX() {
+        return x;
     }
 }

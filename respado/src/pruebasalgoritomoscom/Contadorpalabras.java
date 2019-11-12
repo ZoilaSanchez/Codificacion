@@ -24,9 +24,11 @@ public class Contadorpalabras {
   /**
  *se crea una lista de nodos
  */
-  ArrayList<Character> letras =new ArrayList<>();
+  ArrayList<Character> letras =new ArrayList<>();//cadena ingresada
+  ArrayList<Character> repetir =new ArrayList<>();//letras repedidas
   ArrayList<Nodolista> arreglo = new ArrayList<Nodolista>();
   Iterator<Nodolista> iterador = arreglo.iterator();
+  ArrayList<Elemento> cadenas = new ArrayList<Elemento>();
  
 
     public void verificarcantidad(String original){
@@ -54,6 +56,7 @@ public class Contadorpalabras {
             Nodoarbol nodito=new Nodoarbol((char)pair.getKey(),(int) pair.getValue(), null,null);
             arreglo.add(new Nodolista(nodito));
 //            System.out.println(arreglo);
+            repetir.add((char)pair.getKey());
             Collections.sort(arreglo); 
             
         }
@@ -103,19 +106,35 @@ public class Contadorpalabras {
          arreglo.get(0).getNodo().Prueba(arreglo.get(0).getNodo());
 //         Nodoarbol c = arreglo.get(0).getNodo().buscar('a', arreglo.get(0).getNodo());      
     }
-    public void letras(){
-        Iterator iter = letras.iterator();
+    public void letras(ArrayList x){
+        Iterator iter = x.iterator();
         while (iter.hasNext())
                 System.out.print(iter.next()+" ");
         
     }
-    public void recorridos(){
-//        for (int i = 0; i < letras.size(); i++) {
-////            System.out.println(letras.get(i));
-////             arreglo.get(0).getNodo().buscar(letras.get(i), arreglo.get(0).getNodo());
-//        }
+    public void impirmir(){
+                for (int i = 0; i < cadenas.size(); i++) {
+              
+                    System.out.println("caracter: "+ cadenas.get(i).getX() +" Cadena: "+cadenas.get(i).getZ());
+                       
+                               
+        }
         
-        arreglo.get(0).getNodo().bus('a', arreglo.get(0).getNodo());
-       
     }
+    public void recorridos(){
+
+        for (int i = 0; i < repetir.size(); i++) {
+        arreglo.get(0).getNodo().bus(repetir.get(i), arreglo.get(0).getNodo());
+        System.out.println(arreglo.get(0).getNodo().getX());
+        String cadena=arreglo.get(0).getNodo().getX();
+        
+        String sSubCadena = cadena.substring(1,cadena.length());//cadena eliminando el priemro 0
+        System.out.println(sSubCadena);
+        cadenas.add(new Elemento(repetir.get(i), sSubCadena));
+        
+        }
+       
+        
+    }
+    
 }
