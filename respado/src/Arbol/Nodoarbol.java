@@ -23,7 +23,6 @@ public class Nodoarbol {
         this.f = f;
         this.HI = HI;
         this.HD = HD;
-        this.simbolo=simbolo;
     }
 
     public char getC() {
@@ -106,10 +105,52 @@ public class Nodoarbol {
         x+=nodo.getValor();//contateno
        buss(v,nodo.getHI());
        buss(v,nodo.getHD()); 
+      
+           
         }          
     }
 
     public String getX() {
         return x;
+    }
+    int altura;
+    public void Niveles (char v, Nodoarbol nodo){
+        if(nodo != null){
+            altura++;
+        if(v==nodo.c){
+            System.out.println(altura);
+            return; 
+        }            
+        Niveles(v,nodo.getHI());
+        Niveles(v,nodo.getHD()); 
+        altura=0;
+        }          
+    }
+   private int alturita;
+   public int altur(Nodoarbol x){
+       alturita=0;
+       altura(x,1);
+       return alturita;   
+   }
+    public int alturi(Nodoarbol z){
+       alturita=0;
+       altura(z.getHI(),1);
+       return alturita;   
+   }
+     public int alturd(Nodoarbol x){
+       alturita=0;
+       altura(x.getHD(),1);
+       return alturita;   
+   }
+   
+    public void altura(Nodoarbol n,int cont){
+        if(n!=null){
+            altura(n.getHI(),cont+1);       
+            if(cont > alturita){
+                alturita=cont; 
+                altura(n.getHD(),cont+1);
+            }
+           
+        }
     }
 }

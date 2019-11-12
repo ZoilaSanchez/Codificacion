@@ -59,8 +59,10 @@ public class Contadorpalabras {
             repetir.add((char)pair.getKey());
             Collections.sort(arreglo); 
             
+                    
+            
         }
-        
+        System.out.println("Este ordena "+arreglo);
          // ordenar el arreglo
 
     }//fin del metodo
@@ -91,7 +93,7 @@ public class Contadorpalabras {
                 arreglo.remove(i);
                 arreglo.remove(i);
                 Collections.sort(arreglo);
-                
+                System.out.println("Este "+arreglo);
                 continuar();
             } 
         } 
@@ -126,12 +128,12 @@ public class Contadorpalabras {
         for (int i = 0; i < repetir.size(); i++) {
         arreglo.get(0).getNodo().bus(repetir.get(i), arreglo.get(0).getNodo());
         System.out.println(arreglo.get(0).getNodo().getX());
-        String cadena=arreglo.get(0).getNodo().getX();
+        String sSubCadena=arreglo.get(0).getNodo().getX();
         
-        String sSubCadena = cadena.substring(1,cadena.length());//cadena eliminando el priemro 0
-        System.out.println(sSubCadena);
-        cadenas.add(new Elemento(repetir.get(i), sSubCadena));
-        
+//        String sSubCadena = cadena.substring(1,cadena.length());//cadena eliminando el priemro 0
+      
+//        cadenas.add(new Elemento(repetir.get(i), sSubCadena));
+       
         }
        
         

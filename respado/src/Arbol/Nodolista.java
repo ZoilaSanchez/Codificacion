@@ -34,8 +34,8 @@ public class Nodolista implements Comparable<Nodolista> {
 	}
 @Override
      public int compareTo(Nodolista o) {
-        String a=new String(String.valueOf(this.nodo.getF())+this.nodo.getC());
-        String b=new String(String.valueOf(o.nodo.getF())+o.nodo.getC());
+        String a=new String(String.valueOf(this.nodo.getF()));
+        String b=new String(String.valueOf(o.nodo.getF()));
         return a.compareTo(b);
     }
 
