@@ -5,8 +5,6 @@
  */
 package Arbol;
 
-import pruebasalgoritomoscom.Elemento;
-import pruebasalgoritomoscom.arbol;
 
 /**
  *

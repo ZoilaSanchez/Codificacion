@@ -5,7 +5,7 @@
  */
 package Arbol;
 
-import pruebasalgoritomoscom.Nodo;
+
 
 /**
  *
@@ -59,17 +59,6 @@ public class Nodoarbol {
     }
     
     
-  public void buscar( char z,Nodoarbol nodo) //aqui estoy tratando de ver si son 1 o ceros
-    {
-        Nodoarbol c = null;
-        if(nodo == null || nodo.c==z){
-            return ;
-        }
-        System.out.println(nodo.c);
-        buscar(z,nodo.getHI());
-        buscar(z,nodo.getHD());
-       
-    }
 
     public int getValor() {
         return valor;
@@ -96,10 +85,25 @@ public class Nodoarbol {
         if(nodo == null){
         return;
         }
-        System.out.print(" frecuencia : "+nodo.f); 
-        System.out.println(" caracter: "+nodo.c);
-        System.out.println("Numero a valer es " + nodo.getValor());
+        System.out.print(" frecuencia : "+nodo.f +" "); 
+        System.out.print(" caracter: "+nodo.c+" ");
+        System.out.println(" codigo: " + nodo.getValor());
         Prueba(nodo.getHI());
         Prueba(nodo.getHD());
+    }
+    
+    public void bus (char v, Nodoarbol nodo){
+        if(nodo!= null){
+      
+        if(v==nodo.getC()){
+            
+            return; 
+        }           
+        
+       System.out.println("n "+nodo.getValor());     
+       bus(v,nodo.getHI());
+       bus(v,nodo.getHD()); 
+         
+        }          
     }
 }

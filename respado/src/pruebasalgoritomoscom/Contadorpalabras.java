@@ -27,8 +27,8 @@ public class Contadorpalabras {
   ArrayList<Character> letras =new ArrayList<>();
   ArrayList<Nodolista> arreglo = new ArrayList<Nodolista>();
   Iterator<Nodolista> iterador = arreglo.iterator();
-  Elemento x= new Elemento();
-    arbol z= new arbol();
+ 
+
     public void verificarcantidad(String original){
         reloj.iniciar();
         //個々
@@ -110,10 +110,12 @@ public class Contadorpalabras {
         
     }
     public void recorridos(){
-        for (int i = 0; i < letras.size(); i++) {
-//            System.out.println(letras.get(i));
-             arreglo.get(0).getNodo().buscar(letras.get(i), arreglo.get(0).getNodo());
-        }
+//        for (int i = 0; i < letras.size(); i++) {
+////            System.out.println(letras.get(i));
+////             arreglo.get(0).getNodo().buscar(letras.get(i), arreglo.get(0).getNodo());
+//        }
+        
+        arreglo.get(0).getNodo().bus('a', arreglo.get(0).getNodo());
        
     }
 }

@@ -23,7 +23,7 @@ public class Pruebasalgoritomoscom {
 //         contador.letras();
          System.out.println("");
         contador.imprimirArbol();
-//         contador.recorridos();
+         contador.recorridos();
         
     }
     
