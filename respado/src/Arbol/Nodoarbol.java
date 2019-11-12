@@ -100,18 +100,12 @@ public class Nodoarbol {
     
     public void buss (char v, Nodoarbol nodo){
         if(nodo!= null){
-       
         if(v==nodo.getC()){
-            
             return; 
-            
         }           
-        x+=nodo.getValor();
-//       System.out.println("n "+nodo.getValor());     
+        x+=nodo.getValor();//contateno
        buss(v,nodo.getHI());
-       
        buss(v,nodo.getHD()); 
-         
         }          
     }
 
