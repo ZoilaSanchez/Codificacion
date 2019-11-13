@@ -5,8 +5,10 @@
  */
 package pruebasalgoritomoscom;
 
+import FinalLogica.Desencriptar;
 import FinalLogica.contador;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -17,11 +19,13 @@ public class Pruebasalgoritomoscom {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
        
         contador yosi = new contador();
         yosi.verificarcantidad("aaabbc");
         yosi.GuardarComprimido("hola");
+        Desencriptar a = new Desencriptar("data.das", "hola.fer");
+        System.out.println("Descifrado " +a.jalarDatos());
         
         //clase Contador es la clase de zoili que permitia ver cuantas frecuencias hay de cada letra
         //clase Huffman lee el array de frecuencias de simbolos y los pasa a 0 y 1 y crea un arreglo de este

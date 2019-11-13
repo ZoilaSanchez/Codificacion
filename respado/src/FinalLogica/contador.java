@@ -10,6 +10,7 @@ import pruebasalgoritomoscom.*;
 import Arbol.Nodoarbol;
 import Arbol.Nodolista;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,8 +89,8 @@ public class contador {
 
     }//fin del metodo
     
-    public void GuardarComprimido(String ruta) throws FileNotFoundException{
-        //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
+    public void GuardarComprimido(String ruta) throws FileNotFoundException, IOException{
+        RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
         String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
         for(int i = 0; i < or.length(); i++){ //recorro cada letra   
             for(int j = 0; j < misDatos.size(); j ++){//comparo para obtener los valores en 0 y 1
@@ -118,6 +119,7 @@ public class contador {
             System.out.println(ch);
         }
         System.out.println("tEXTO a guardar " + textoGuardo);
+        guardar.writeChars(textoGuardo);//Ya se guarda la cadena comprimida
     }
      Huffman c;
      
