@@ -88,7 +88,7 @@ public class contador {
 
     }//fin del metodo
     
-    public void GuardarComprimido() throws FileNotFoundException{
+    public void GuardarComprimido(String ruta) throws FileNotFoundException{
         //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
         String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
         for(int i = 0; i < or.length(); i++){ //recorro cada letra   
@@ -99,6 +99,25 @@ public class contador {
             }
         }
         System.out.println("Cadena a guardar " + cadenaRLE);
+        ArrayList<String> parts = new ArrayList<String>();//Aqui hare la compresion
+        int len = cadenaRLE.length();
+        for (int i=0; i<len; i+=8)
+        {//Voy seperandolo en substrings                   en cantidades de 8 bits
+            parts.add(cadenaRLE.substring(i, Math.min(len, i + 8)));
+        }
+        //System.out.println("El arreglo es " + parts);
+        ArrayList<Integer> cadenaAsciiNumero = new ArrayList<Integer>();
+        for(int i = 0; i < parts.size(); i++){
+            cadenaAsciiNumero.add(Integer.parseInt(parts.get(i), 2));//Convierto de base 2 a entero
+        }
+        System.out.println(cadenaAsciiNumero);
+        String textoGuardo = "";
+        for(int i = 0; i < cadenaAsciiNumero.size(); i++){
+            char ch = (char) cadenaAsciiNumero.get(i).intValue();
+            textoGuardo = textoGuardo + ch;
+            System.out.println(ch);
+        }
+        System.out.println("tEXTO a guardar " + textoGuardo);
     }
      Huffman c;
      
