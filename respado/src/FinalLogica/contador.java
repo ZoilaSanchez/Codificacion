@@ -159,7 +159,7 @@ public class contador {
          for (int i = 0; i < misDatos.size(); i++) {
 //             System.out.println(misDatos.get(i).getSimbolo()+" "+ misDatos.get(i).getFormaComprimida());
              z+=misDatos.get(i).getSimbolo()+"-"+misDatos.get(i).getFormaComprimida() + "-";
-            pdf+="\t"+misDatos.get(i).getSimbolo() +"\t"+" : "+"\t"+misDatos.get(i).getFormaComprimida() + "\n";
+            pdf+=" "+misDatos.get(i).getSimbolo() +"\t"+" : "+"\t"+misDatos.get(i).getFormaComprimida() + "\n";
             
          }
   
@@ -169,7 +169,7 @@ public class contador {
      int t=0;
      public String enviar_generadortxt(){
          v="";
-         String v="\t"+"Simbolo"+"\t"+"\t"+"Codigo"+"\n"+pdf;
+         String v=" "+"Simbolo"+"\t"+"\t"+"Codigo"+"\n"+pdf;
          System.out.println(v);
          t=1;
          return v;

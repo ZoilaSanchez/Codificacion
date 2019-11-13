@@ -354,7 +354,7 @@ public class Interfaz extends javax.swing.JFrame {
                  asigancion.setText(yosi.enviar_generadortxt());
                  System.out.println(yosi.enviar_generadortxt());
                  System.out.println(yosi.getCadenaRLE());
-                 binario.setText("\t"+yosi.getCadenaRLE());
+                 binario.setText(" "+yosi.getCadenaRLE()+"");
                 
                  
                  byte[] bytes = yosi.getCadenaRLE().getBytes("UTF-8");
@@ -367,7 +367,7 @@ public class Interfaz extends javax.swing.JFrame {
                  copia.setText(Integer.toString(sizeInBytes));
                 
                  
-                 por.setText(Integer.toString(sizeInBytes*100/sizeInByte)+" % ");
+                 por.setText(Integer.toString(sizeInByte*100/sizeInBytes)+" % ");
                  
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
