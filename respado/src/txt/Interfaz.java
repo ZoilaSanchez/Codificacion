@@ -6,16 +6,27 @@
 package txt;
 
 //import java.awt.Desktop;
+import FinalLogica.contador;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.jvnet.hk2.internal.ThreeThirtyResolver;
+import pruebasalgoritomoscom.Generartxt;
+import pruebasalgoritomoscom.cronometro;
 
 /**
  *
@@ -23,19 +34,30 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz extends javax.swing.JFrame {
 
-    DefaultListModel modelo = new DefaultListModel();
-
+   
+         DefaultListModel modelo = new DefaultListModel();
+    Generartxt n;
+    JFileChooser x;
+     contador yosi ;
+               File archivo;
+    FileOutputStream salida;
+    FileInputStream entrada;
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
-        jList1.setOpaque(false);
-        jList2.setOpaque(false);
-        jList3.setOpaque(false);
-        jList4.setOpaque(false);
-        jList5.setOpaque(false);
+        
+      
+         adfasdfds.setText("00"+" : "+"00"+" : "+"00"+" : "+"000");
         this.setLocationRelativeTo(null);
+        tiempo.setEnabled(false);
+        modelo = new DefaultListModel();
+     n= new Generartxt();
+     x=new JFileChooser();
+      yosi = new contador();
+      
+      
         //  jList1.setontentAreaFilled(false);
         //jButton2.setOpaque(false);
         //jButton2.setContentAreaFilled(false);
@@ -49,36 +71,32 @@ public class Interfaz extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jFileChooser1 = new javax.swing.JFileChooser();
         jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<String>();
         jButton2 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<String>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<String>();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<String>();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<String>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contenido = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        adfasdfds = new javax.swing.JLabel();
+        original = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ascii = new javax.swing.JTextArea();
+        copia = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        binario = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        asigancion = new javax.swing.JTextArea();
+        por = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tiempo = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
 
@@ -93,14 +111,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jButton2, org.jdesktop.beansbinding.ObjectProperty.create(), jList1, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
-        bindingGroup.addBinding(binding);
-
-        jScrollPane2.setViewportView(jList1);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 551, 120));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jButton2.setText("Descompresión");
@@ -111,56 +122,47 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
 
-        jScrollPane3.setViewportView(jList2);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 551, 150));
-
-        jLabel1.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel1.setText("Listado de los archivos TXT");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contenido del TXT seleccionado");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
-
-        jScrollPane4.setViewportView(jList3);
-
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 350, 110));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Asignación de valores binarios a cada carácter");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
-
-        jScrollPane5.setViewportView(jList4);
-
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 350, 110));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 255, 255));
         jLabel4.setText("Cadena comprimida en formato binario");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, -1, -1));
 
-        jScrollPane6.setViewportView(jList5);
+        jScrollPane1.setOpaque(false);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 350, 130));
+        contenido.setEditable(false);
+        contenido.setColumns(20);
+        contenido.setFont(new java.awt.Font("Ebrima", 0, 24)); // NOI18N
+        contenido.setLineWrap(true);
+        contenido.setRows(5);
+        contenido.setOpaque(false);
+        jScrollPane1.setViewportView(contenido);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 470, 260));
 
         jLabel5.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cadena comprimida en formato ascii");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Tiempo de compresión");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tamaño original");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,27 +172,54 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Porcentaje de compresión");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("0");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
+        adfasdfds.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        adfasdfds.setForeground(new java.awt.Color(255, 255, 255));
+        adfasdfds.setText("0");
+        getContentPane().add(adfasdfds, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 210, -1));
 
-        jLabel11.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("0");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, -1, -1));
+        original.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        original.setForeground(new java.awt.Color(255, 255, 255));
+        original.setText("0");
+        getContentPane().add(original, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 230, -1));
 
-        jLabel12.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("0");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
+        ascii.setEditable(false);
+        ascii.setColumns(20);
+        ascii.setFont(new java.awt.Font("Ebrima", 0, 18)); // NOI18N
+        ascii.setLineWrap(true);
+        ascii.setRows(5);
+        jScrollPane4.setViewportView(ascii);
 
-        jLabel13.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("0");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, -1, -1));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, 360, 130));
+
+        copia.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        copia.setForeground(new java.awt.Color(255, 255, 255));
+        copia.setText("0");
+        getContentPane().add(copia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
+
+        binario.setEditable(false);
+        binario.setColumns(20);
+        binario.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
+        binario.setLineWrap(true);
+        binario.setRows(5);
+        jScrollPane3.setViewportView(binario);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 370, 110));
+
+        asigancion.setEditable(false);
+        asigancion.setColumns(20);
+        asigancion.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
+        asigancion.setLineWrap(true);
+        asigancion.setRows(5);
+        jScrollPane2.setViewportView(asigancion);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 370, 180));
+
+        por.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        por.setForeground(new java.awt.Color(255, 255, 255));
+        por.setText("0");
+        getContentPane().add(por, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jButton3.setText("Salir");
@@ -201,14 +230,14 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jButton4.setText("Iniciar la compresión");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        tiempo.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        tiempo.setText("Iniciar la compresión");
+        tiempo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                tiempoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
+        getContentPane().add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jButton5.setText("Menú");
@@ -219,10 +248,8 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/txt/404387_215516_1.jpg"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/txt/fondoa.jpg"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,40 +260,116 @@ public class Interfaz extends javax.swing.JFrame {
         descompresion.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    private FileNameExtensionFilter filter=new FileNameExtensionFilter("Archivos txt ","txt");
+    String ruta;
+    String cadena_text;
+    boolean si_texto=false;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /* String ruta="C:\\";
-        // public void Acceso_a_la_pc(){
-            Desktop desktop = Desktop.getDesktop();
-            File archivo = new File(ruta);
-
-            try {
-                if(desktop.isSupported(Desktop.Action.OPEN))
-                {
-                    if(archivo.exists()){
-                        desktop.open(archivo);
-                        System.out.println(archivo.getAbsolutePath());
-
-                    }else{
-                        System.out.println("no existe el archivo");
-                    }
-                }
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }*/
-        // }
-        try {
-            // TODO add your handling code here:
-            jFileChooser1.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            jFileChooser1.showOpenDialog(null);
-            String ruta = (jFileChooser1.getSelectedFile().toString());
-            System.out.println("ruta" + ruta);
-            obtener_todos_los_archivos(new File(ruta));
-        } catch (IOException ex) {
-            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       contenido.setText("");
+       binario.setText("");
+       ascii.setText("");
+       asigancion.setText("");
+       
+            x.setFileFilter(filter);
+            int opcion=x.showOpenDialog(this);
+            if(opcion==JFileChooser.APPROVE_OPTION){
+                //obtener ruta
+                ruta= x.getSelectedFile().toString();
+                cadena_text=n.abrir(new File(ruta));
+                contenido.setText("\t"+cadena_text);
+                tiempo.setEnabled(true);
+                si_texto=true;
+                
+            }
+          
+            
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+    String ac="";
+    String asgi="";
+    public void vales_paragenerartxt(){
+           
+                 ac=yosi.getTextoGuardo();//aciii
+                 asgi=yosi.txts();
+                String p="";
+                 System.out.println("estddd " +ac);
+                  System.out.println("codi "+asgi);
+                  if(x.showDialog(null, "Guardar")==JFileChooser.APPROVE_OPTION){
+                      archivo=x.getSelectedFile();
+                      if(archivo.getName().endsWith("txt")){
+                          String documento=ac;
+                          for (int i = 0; i < ac.length(); i++) {
+                              int xwz=(int)ac.charAt(i);
+                              
+                              String zzz=Integer.toString(xwz);
+                              p+=ac.charAt(i)+"-"+zzz+"-";
+                          }
+                          String mensaje=guardar(archivo, p);
+                          
+                          if(mensaje!=null){
+                              JOptionPane.showMessageDialog(null, mensaje);
+                          }
+                      }
+                          
+                  }
+                  if(x.showDialog(null, "Guardar")==JFileChooser.APPROVE_OPTION){
+                      archivo=x.getSelectedFile();
+                      if(archivo.getName().endsWith("txt")){
+                          String documento=asgi;
+                       
+                          String mensaje=guardar(archivo, documento);
+                          
+                          if(mensaje!=null){
+                              JOptionPane.showMessageDialog(null, mensaje);
+                          }
+                      }
+                          
+                  }
+                                   
+    }
+    
+    public String guardar(File archivo,String documento){
+        String mensaje="";
+        try {
+            salida=new FileOutputStream(archivo);
+            byte[] texto= documento.getBytes();
+            salida.write(texto);
+            mensaje="Guardado";
+            
+        } catch (Exception e) {
+        }
+        return mensaje;
+    }
+    public void inicios( Thread hilo) throws UnsupportedEncodingException{
+            asigancion.setText("");
+                    binario.setText("");
+                    ascii.setText("");
+                 yosi.verificarcantidad(cadena_text,hilo);
+                
+                 ascii.setText("\t"+yosi.GuardarComprimido(hilo));
+                 yosi.txt();
+                 asigancion.setText(yosi.enviar_generadortxt());
+                 System.out.println(yosi.enviar_generadortxt());
+                 System.out.println(yosi.getCadenaRLE());
+                 binario.setText("\t"+yosi.getCadenaRLE());
+                
+                 
+                 byte[] bytes = yosi.getCadenaRLE().getBytes("UTF-8");
+                 int sizeInBytes = bytes.length;
+                 byte[] bytez = cadena_text.getBytes("UTF-8");
+                 int sizeInByte = bytez.length;
+                 
+                 original.setText(Integer.toString(sizeInByte));
+
+                 copia.setText(Integer.toString(sizeInBytes));
+                
+                 
+                 por.setText(Integer.toString(sizeInBytes*100/sizeInByte)+" % ");
+                 
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String[] options = {"Reiniciar", "Salir"};
@@ -279,11 +382,87 @@ public class Interfaz extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+    private  int mili=0;
+  private  int seg=0;
+  private  int min=0;
+  private  int hor=0;
+  private  boolean estado=false;
+    cronometro reloj=new cronometro();
+    
+    
+    private void tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoActionPerformed
+       
+            tiempo.setEnabled(true);
+            binario.setText("");
+        ascii.setText("");
+        asigancion.setText("");
+        binario.setText("");
+        estado=true;
+         mili=0;
+         seg=0;
+         min=0;
+         hor=0;
+         tiempo.setEnabled(false);
+     
+         
+        Thread hilo=new Thread(){
+           
+           public void run(){
+             for(;;){//no deje de imprimir  significan los ;;
+                 
+                                 
+                 if(estado==true){
+                     try {
+                         sleep(1); //corra cada segundo
+                         if(mili>=1000){
+                             mili=0;
+                             seg++;
+                         }
+                         if(seg>=60){
+                             mili=0;
+                             seg=0;
+                             min++;
+                         }
+                         if(min>=60){
+                             mili=0;
+                             seg=0;
+                             min=0;
+                             hor++;
+                         }
+                         
+                          adfasdfds.setText(hor+" : "+min+" : "+seg+" : "+mili);
+                      
+                           mili++;
+                         
+                        
+                        
+                        
+                     } catch (Exception e) {
+                     }
+                 }else{
+                       break;      
+                 }
+                            
+                 }
+                      
+           
+        }
+        } ; 
+             try {
+                 inicios(hilo);
+             } catch (UnsupportedEncodingException ex) {
+                 Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+        //guardar en un txt
+         
+        vales_paragenerartxt();
+        
+    }//GEN-LAST:event_tiempoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+       
+    
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         Menú menu = new Menú();
@@ -316,7 +495,7 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERRRO LEYENDO ARCHIVO" + e);
         }
         //este return da todo el contenido del txt en una sola sola varible string
-        jList2.setModel(modelo2);
+        
         return contenido_del_txt_ya_concatenado;
     }
 
@@ -336,7 +515,7 @@ public class Interfaz extends javax.swing.JFrame {
                 }
             }
         }
-        jList1.setModel(modelo);
+       
 
     }
 
@@ -376,17 +555,17 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adfasdfds;
+    private javax.swing.JTextArea ascii;
+    private javax.swing.JTextArea asigancion;
+    private javax.swing.JTextArea binario;
+    private javax.swing.JTextArea contenido;
+    private javax.swing.JLabel copia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -396,16 +575,12 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private javax.swing.JLabel original;
+    private javax.swing.JLabel por;
+    private javax.swing.JButton tiempo;
     // End of variables declaration//GEN-END:variables
 }

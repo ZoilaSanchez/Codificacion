@@ -5,20 +5,40 @@
  */
 package txt;
 
+import FinalLogica.contador;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import static java.lang.Thread.sleep;
+import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import pruebasalgoritomoscom.Generartxt;
+import pruebasalgoritomoscom.cronometro;
 
 /**
  *
  * @author dell
  */
 public class Interfaz2 extends javax.swing.JFrame {
-
+    DefaultListModel modelo = new DefaultListModel();
+    Generartxt n;
+    JFileChooser x;
+     contador yosi ;
+               File archivo;
+    FileOutputStream salida;
+    FileInputStream entrada;
     /**
      * Creates new form Interfaz2
      */
     public Interfaz2() {
         initComponents();
         this.setLocationRelativeTo(null);
+         modelo = new DefaultListModel();
+     n= new Generartxt();
+     x=new JFileChooser();
+      yosi = new contador();
     }
 
     /**
@@ -30,39 +50,35 @@ public class Interfaz2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<String>();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<String>();
         jButton2 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        cadenadescomprimida = new javax.swing.JList<String>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        Descomprimir = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        adfasdfds = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        mosrrar = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        asginaciones = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cadena = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane2.setViewportView(jList1);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 110, 330, 250));
-
         jLabel3.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cadena Cifrada");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
-
-        jScrollPane3.setViewportView(jList2);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 920, 130));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jButton2.setText("Menú");
@@ -72,10 +88,6 @@ public class Interfaz2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, -1, -1));
-
-        jScrollPane4.setViewportView(cadenadescomprimida);
-
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 570, 250));
 
         jLabel6.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,14 +109,14 @@ public class Interfaz2 extends javax.swing.JFrame {
         jLabel10.setText("0");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jButton4.setText("Iniciar la descompresión");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Descomprimir.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        Descomprimir.setText("Descomprimir");
+        Descomprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DescomprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        getContentPane().add(Descomprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jButton3.setText("Salir");
@@ -133,6 +145,55 @@ public class Interfaz2 extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, -1, -1));
 
+        jButton7.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        jButton7.setText("Ascii ");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        jButton8.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        jButton8.setText("Asignacion");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Tiempo de compresión");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        adfasdfds.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        adfasdfds.setForeground(new java.awt.Color(255, 255, 255));
+        adfasdfds.setText("0");
+        getContentPane().add(adfasdfds, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 210, -1));
+
+        mosrrar.setColumns(20);
+        mosrrar.setLineWrap(true);
+        mosrrar.setRows(5);
+        jScrollPane2.setViewportView(mosrrar);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 710, 110));
+
+        asginaciones.setColumns(20);
+        asginaciones.setLineWrap(true);
+        asginaciones.setRows(5);
+        jScrollPane4.setViewportView(asginaciones);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 350, 180));
+
+        cadena.setColumns(20);
+        cadena.setLineWrap(true);
+        cadena.setRows(5);
+        jScrollPane1.setViewportView(cadena);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 460, 160));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/txt/1537292042__tutoriales_en_linea.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -146,10 +207,82 @@ public class Interfaz2 extends javax.swing.JFrame {
         setVisible(false);
         // todo_el_contenido_del_txt es la varibale que debe enviar a su función para iniciar la compresión
     }//GEN-LAST:event_jButton2ActionPerformed
+    private FileNameExtensionFilter filter=new FileNameExtensionFilter("Archivos txt ","txt");
+    String ruta;
+    String asdf,cadena_text;
+    boolean si_texto=false;
+    private  int mili=0;
+  private  int seg=0;
+  private  int min=0;
+  private  int hor=0;
+  private  boolean estado=false;
+    cronometro reloj=new cronometro();
+    public void descomprimir(String txt){
+       
+    }
+    
+    private void DescomprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescomprimirActionPerformed
+       
+         descomprimir(cadena_text);
+         
+        estado=true;
+         mili=0;
+         seg=0;
+         min=0;
+         hor=0;
+        
+     
+         
+        Thread hilo=new Thread(){
+           
+           public void run(){
+             for(;;){//no deje de imprimir  significan los ;;
+                 
+                                 
+                 if(estado==true){
+                     try {
+                         sleep(1); //corra cada segundo
+                         if(mili>=1000){
+                             mili=0;
+                             seg++;
+                         }
+                         if(seg>=60){
+                             mili=0;
+                             seg=0;
+                             min++;
+                         }
+                         if(min>=60){
+                             mili=0;
+                             seg=0;
+                             min=0;
+                             hor++;
+                         }
+                         
+                          adfasdfds.setText(hor+" : "+min+" : "+seg+" : "+mili);
+                      
+                           mili++;
+                         
+                        
+                        
+                        
+                     } catch (Exception e) {
+                     }
+                 }else{
+                       break;      
+                 }
+                            
+                 }
+                      
+           
+        }
+        } ; 
+//         inicios(hilo);
+       
+        //guardar en un txt
+         
+       
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_DescomprimirActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -173,6 +306,98 @@ public class Interfaz2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // ascii
+        x.setFileFilter(filter);
+            int opcion=x.showOpenDialog(this);
+            if(opcion==JFileChooser.APPROVE_OPTION){
+                //obtener ruta
+                ruta= x.getSelectedFile().toString();
+                cadena_text=n.abrir(new File(ruta));
+                cadena.setText(separar(cadena_text));
+               
+                
+            }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // asigancion
+         x.setFileFilter(filter);
+            int opcion=x.showOpenDialog(this);
+            if(opcion==JFileChooser.APPROVE_OPTION){
+                //obtener ruta
+                ruta= x.getSelectedFile().toString();
+             
+                asdf="\t"+"Simbolo"+"\t"+"\t"+"Codigo"+"\n"+n.abrir(new File(ruta));
+                asginaciones.setText(asdf);
+              
+                
+            }
+    }//GEN-LAST:event_jButton8ActionPerformed
+    
+    public String separarnum(String c){
+         String ca = c.replace("-", "");
+        char [] cadena=ca.toCharArray();
+        String letras="";
+        for (int i = 0; i < cadena.length; i++) {
+            if(Character.isDigit(cadena[i])){
+                letras+="-"+cadena[i];
+            }else{
+                
+            }
+        }
+        System.out.println(letras);
+        return letras;
+    
+    }
+    Character [] ar;
+    public String separar(String c){
+         String ca = c.replace("-", "");
+        char [] cadena=ca.toCharArray();
+        String letras="";
+        for (int i = 0; i < cadena.length; i++) {
+            if(Character.isDigit(cadena[i])){
+                
+            }else{
+                letras+=cadena[i];
+            }
+        }
+        System.out.println(letras);
+        return letras;
+        
+//     String[] arre = c.split("-");
+// 
+//            // En este momento tenemos un array en el que cada elemento es un color.
+//        for (int i = 0; i < arre.length; i++) {
+//             if(i%2==0){
+//                 
+//             }else{
+//                  System.out.println(arre[i].charAt(i));
+//             }
+//                     
+                 
+          
+//            String binario = Integer.toBinaryString(arre[i].charAt(i));
+             
+           
+}
+//    }
+    
+    String salidas,q;
+     public String convertir_ascii_binario(String cadena){
+        salidas="";
+        q="";
+        for (int i = 0; i < cadena.length(); i++) {
+            int ascii = (int) cadena.charAt(i);
+             String binario = Integer.toBinaryString(ascii);
+           
+             q+= cadena.charAt(i)+"--> "+ ascii+"--> "+binario+"\n";
+           
+             salidas+= binario;
+             System.out.println("ya tengo sueño "+salidas);
+        }
+        return q;
+    }
     /**
      * @param args the command line arguments
      */
@@ -209,22 +434,26 @@ public class Interfaz2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> cadenadescomprimida;
+    private javax.swing.JButton Descomprimir;
+    private javax.swing.JLabel adfasdfds;
+    private javax.swing.JTextArea asginaciones;
+    private javax.swing.JTextArea cadena;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea mosrrar;
     // End of variables declaration//GEN-END:variables
 }

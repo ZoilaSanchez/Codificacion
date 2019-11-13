@@ -39,7 +39,9 @@ public class contador {
     ArrayList<ElementoAGuardar> misDatos;
 
      ArrayList<ElementoAGuardar> dat ;
-    public void verificarcantidad(String original){
+     String simbolo="";
+    public void verificarcantidad(String original, Thread hilo){
+        hilo.start();
         or = original;
         reloj.iniciar();
         //個々
@@ -84,15 +86,33 @@ public class contador {
         
        dat = guardos.leer();
         System.out.println("Simbolo " + dat.get(2).getFormaComprimida());
-        
+        simbolo=dat.get(2).getFormaComprimida();
         //System.out.println("Plox " + misDatos.get(2).getFormaComprimida());
          // ordenar el arreglo
 
     }//fin del metodo
+
+    public String getSimbolo() {
+        return simbolo;
+    }
+
+    public String getCadenaRLE() {
+        return cadenaRLE;
+    }
+    String cadenaRLE = "";
+     String textoGuardo="";
+
+    public String getTextoGuardo() {
+        return textoGuardo;
+    }
+    public String GuardarComprimido(Thread hilo) {
+        //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
+        //Ya que si no nos deja concatenar al principio
+        
     
-    public void GuardarComprimido(String ruta) throws FileNotFoundException, IOException{
-        RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
-        String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
+//        RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
+       cadenaRLE = "";//Ya que si no nos deja concatenar al principio
+
         for(int i = 0; i < or.length(); i++){ //recorro cada letra   
             for(int j = 0; j < misDatos.size(); j ++){//comparo para obtener los valores en 0 y 1
                 if(or.charAt(i) == misDatos.get(j).getSimbolo()){
@@ -114,33 +134,63 @@ public class contador {
             cadenaAsciiNumero.add(Integer.parseInt(parts.get(i), 2));//Convierto de base 2 a entero
         }
         System.out.println(cadenaAsciiNumero);
-        String textoGuardo = "";
+        textoGuardo = "";
         for(int i = 0; i < cadenaAsciiNumero.size(); i++){
             char ch = (char) cadenaAsciiNumero.get(i).intValue();
             textoGuardo = textoGuardo + ch;
             System.out.println(ch);
         }
-        System.out.println("tEXTO a guardar " + textoGuardo);
-        guardar.writeChars(textoGuardo);//Ya se guarda la cadena comprimida
+
+        System.out.println("TEXTO a guardar " + textoGuardo);
+        
+        hilo.stop();
+        return textoGuardo;
+
+//        System.out.println("tEXTO a guardar " + textoGuardo);
+//        guardar.writeChars(textoGuardo);//Ya se guarda la cadena comprimida
+    
     }
 
     String pdf= "";
+    String zz="";
      public void txt(){
-         
+         pdf="";
+         zz="";
          for (int i = 0; i < misDatos.size(); i++) {
 //             System.out.println(misDatos.get(i).getSimbolo()+" "+ misDatos.get(i).getFormaComprimida());
-         
+             z+=misDatos.get(i).getSimbolo()+"-"+misDatos.get(i).getFormaComprimida() + "-";
             pdf+="\t"+misDatos.get(i).getSimbolo() +"\t"+" : "+"\t"+misDatos.get(i).getFormaComprimida() + "\n";
+            
          }
   
      }
-     String v;
-     public void enviar_generadortxt(){
+     
+     String v,z;
+     int t=0;
+     public String enviar_generadortxt(){
          v="";
          String v="\t"+"Simbolo"+"\t"+"\t"+"Codigo"+"\n"+pdf;
          System.out.println(v);
+         t=1;
+         return v;
          
      }
+     public String txts(){
+         z="";
+         String z=pdf;
+         System.out.println(z);
+         t=1;
+         return z;
+         
+     }
+
+    public int getT() {
+        return t;
+    }
+
+    public String getV() {
+        return v;
+    }
 
      
       Generartxt x=new Generartxt();

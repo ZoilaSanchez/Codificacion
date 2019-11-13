@@ -20,7 +20,7 @@ public class Generartxt {
     
    
     public String abrir(File archivo){
-        String mensaje=null;
+        String mensaje="";
         try {
             entrada=new FileInputStream(archivo);
             int asccii;

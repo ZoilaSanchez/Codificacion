@@ -161,7 +161,7 @@ public class Menú extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-         Interfaz2 descompresion=new Interfaz2();
+        Interfaz2 descompresion=new Interfaz2();
         descompresion.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
