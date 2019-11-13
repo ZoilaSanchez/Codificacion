@@ -9,6 +9,8 @@ package FinalLogica;
 import pruebasalgoritomoscom.*;
 import Arbol.Nodoarbol;
 import Arbol.Nodolista;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,9 +32,11 @@ public class contador {
   ArrayList<Nodolista> arreglo = new ArrayList<Nodolista>();//este tiene frecuencias y simbolos
   Iterator<Nodolista> iterador = arreglo.iterator();
   ArrayList<Elemento> cadenas = new ArrayList<Elemento>();
- 
+    private String or;//Esto nos va a servir para cuando querramos comprimir
+    ArrayList<ElementoAGuardar> misDatos;
 
     public void verificarcantidad(String original){
+        or = original;
         reloj.iniciar();
         //個々
         String cadena = original.replace(" ", "個"); //eliminar espacios
@@ -68,7 +72,7 @@ public class contador {
         }
         Huffman guardo = new Huffman();
         guardo.Convertir(valores, frecuencia);
-        ArrayList<ElementoAGuardar> misDatos = guardo.getArreglo();
+        misDatos = guardo.getArreglo();
         CargarYLeerArchivos guardos = new CargarYLeerArchivos("data.das");
         guardos.escribir(misDatos);
         ArrayList<ElementoAGuardar> dat = guardos.leer();
@@ -79,5 +83,16 @@ public class contador {
 
     }//fin del metodo
     
-    
+    public void GuardarComprimido(String ruta) throws FileNotFoundException{
+        //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
+        String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
+        for(int i = 0; i < or.length(); i++){ //recorro cada letra    
+            for(int j = 0; j < misDatos.size(); j ++){//comparo para obtener los valores en 0 y 1
+                if(or.charAt(i) == misDatos.get(j).getSimbolo()){
+                    cadenaRLE = misDatos.get(j).getFormaComprimida();
+                }
+            }
+        }
+        System.out.println("Cadena a guardar " + cadenaRLE);
+    }
 }
