@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -35,6 +36,7 @@ public class contador {
     private String or;//Esto nos va a servir para cuando querramos comprimir
     ArrayList<ElementoAGuardar> misDatos;
 
+     ArrayList<ElementoAGuardar> dat ;
     public void verificarcantidad(String original){
         or = original;
         reloj.iniciar();
@@ -71,11 +73,14 @@ public class contador {
             frecuencia[i] = arreglo.get(i).getNodo().getF();
         }
         Huffman guardo = new Huffman();
+        
         guardo.Convertir(valores, frecuencia);
         misDatos = guardo.getArreglo();
+       
         CargarYLeerArchivos guardos = new CargarYLeerArchivos("data.das");
         guardos.escribir(misDatos);
-        ArrayList<ElementoAGuardar> dat = guardos.leer();
+        
+       dat = guardos.leer();
         System.out.println("Simbolo " + dat.get(2).getFormaComprimida());
         
         //System.out.println("Plox " + misDatos.get(2).getFormaComprimida());
@@ -83,7 +88,7 @@ public class contador {
 
     }//fin del metodo
     
-    public void GuardarComprimido(String ruta) throws FileNotFoundException{
+    public void GuardarComprimido() throws FileNotFoundException{
         //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
         String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
         for(int i = 0; i < or.length(); i++){ //recorro cada letra   
@@ -95,4 +100,7 @@ public class contador {
         }
         System.out.println("Cadena a guardar " + cadenaRLE);
     }
+     Huffman c;
+     
+     
 }
