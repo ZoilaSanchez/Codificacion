@@ -32,11 +32,19 @@ public class Desencriptar {
     }
     public void Descomprimir() throws FileNotFoundException{
         String datosComprimidos = this.jalarDatos();
-        for(int i = 0; i < datosAlmacenados.size(); i++){
-            System.out.println(datosAlmacenados.get(i).getSimbolo());
-            System.out.println(datosAlmacenados.get(i).getFormaComprimida());
+        String cadenasUnosCeros = "";
+        int a;
+        String b;
+        for(int j = 0; j < datosComprimidos.length(); j++){
+            a = datosComprimidos.charAt(j);
+            b = Integer.toBinaryString(a);
+            cadenasUnosCeros = cadenasUnosCeros + b;//Hago la cadena de unos y ceros
         }
-        
+        System.out.println("La cadena de unos y ceros es " + cadenasUnosCeros);
+        for(int i = 0; i < datosAlmacenados.size(); i++){
+                System.out.println(datosAlmacenados.get(i).getSimbolo());
+                System.out.println(datosAlmacenados.get(i).getFormaComprimida());
+            }
     }
     public String jalarDatos() throws FileNotFoundException{
         String data = ""; 
