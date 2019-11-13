@@ -32,6 +32,10 @@ public class Desencriptar {
     }
     public void Descomprimir() throws FileNotFoundException{
         String datosComprimidos = this.jalarDatos();
+        for(int i = 0; i < datosAlmacenados.size(); i++){
+            System.out.println(datosAlmacenados.get(i).getSimbolo());
+            System.out.println(datosAlmacenados.get(i).getFormaComprimida());
+        }
         
     }
     public String jalarDatos() throws FileNotFoundException{

@@ -25,7 +25,7 @@ public class Pruebasalgoritomoscom {
         yosi.verificarcantidad("aaabbc");
         yosi.GuardarComprimido("hola");
         Desencriptar a = new Desencriptar("data.das", "hola.fer");
-        System.out.println("Descifrado " +a.jalarDatos());
+        a.Descomprimir();
         
         //clase Contador es la clase de zoili que permitia ver cuantas frecuencias hay de cada letra
         //clase Huffman lee el array de frecuencias de simbolos y los pasa a 0 y 1 y crea un arreglo de este
