@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package pruebasalgoritomoscom;
-
+import java.io.Serializable;
 /**
  *
  * @author Lopez
  */
 public class Elemento {
+    private static final long serialVersionUID = 666L;
     private char x;
     private String z;
 
