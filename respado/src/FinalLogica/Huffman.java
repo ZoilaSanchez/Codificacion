@@ -47,10 +47,9 @@ public class Huffman {
             
             // aqui se colcoan los valores con sus signifcados
             
-            //generar ppdf
+            //generar txt
            
-            pdf="";
-            pdf+="\t"+root.c +"\t"+" : "+"\t"+s + " ";
+            
             
             System.out.println(pdf);
             
@@ -64,21 +63,7 @@ public class Huffman {
     } 
     
     //generar txt
-    Generartxt x=new Generartxt();
    
-    public void generartxt(JFileChooser sel){
-       if(sel.showDialog(null,"Guardar")==JFileChooser.APPROVE_OPTION){
-           x.setArchivo(sel.getSelectedFile());
-           if(x.getArchivo().getName().endsWith("txt")){
-               String documento=pdf;//mostrar
-                String mensaje=x.guardar(x.getArchivo(), documento);
-                if(mensaje!=null){
-                    JOptionPane.showMessageDialog(null,mensaje);
-                }
-           }
-       }
-        
-    }  
     
     
     // main function 

@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -88,7 +89,7 @@ public class contador {
 
     }//fin del metodo
     
-    public void GuardarComprimido(String ruta) throws FileNotFoundException{
+    public void GuardarComprimido() throws FileNotFoundException{
         //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
         String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
         for(int i = 0; i < or.length(); i++){ //recorro cada letra   
@@ -99,6 +100,7 @@ public class contador {
             }
         }
         System.out.println("Cadena a guardar " + cadenaRLE);
+        
         ArrayList<String> parts = new ArrayList<String>();//Aqui hare la compresion
         int len = cadenaRLE.length();
         for (int i=0; i<len; i+=8)
@@ -117,9 +119,40 @@ public class contador {
             textoGuardo = textoGuardo + ch;
             System.out.println(ch);
         }
-        System.out.println("tEXTO a guardar " + textoGuardo);
+        System.out.println("TEXTO a guardar " + textoGuardo);
     }
-     Huffman c;
+    String pdf= "";
+     public void txt(){
+         
+         for (int i = 0; i < misDatos.size(); i++) {
+//             System.out.println(misDatos.get(i).getSimbolo()+" "+ misDatos.get(i).getFormaComprimida());
+         
+            pdf+="\t"+misDatos.get(i).getSimbolo() +"\t"+" : "+"\t"+misDatos.get(i).getFormaComprimida() + "\n";
+         }
+  
+     }
+     String v;
+     public void enviar_generadortxt(){
+         v="";
+         String v="\t"+"Simbolo"+"\t"+"\t"+"Codigo"+"\n"+pdf;
+         System.out.println(v);
+         
+     }
      
+      Generartxt x=new Generartxt();
+   
+    public void generartxt(JFileChooser sel){
+       if(sel.showDialog(null,"Guardar")==JFileChooser.APPROVE_OPTION){
+           x.setArchivo(sel.getSelectedFile());
+           if(x.getArchivo().getName().endsWith("txt")){
+               String documento=v;//mostrar
+                String mensaje=x.guardar(x.getArchivo(), documento);
+                if(mensaje!=null){
+                    JOptionPane.showMessageDialog(null,mensaje);
+                }
+           }
+       }
+        
+    }  
      
 }
