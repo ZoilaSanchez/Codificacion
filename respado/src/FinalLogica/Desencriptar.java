@@ -30,6 +30,10 @@ public class Desencriptar {
        CargarYLeerArchivos guardos = new CargarYLeerArchivos(ruta1); 
        datosAlmacenados = guardos.leer();
     }
+    public void Descomprimir() throws FileNotFoundException{
+        String datosComprimidos = this.jalarDatos();
+        
+    }
     public String jalarDatos() throws FileNotFoundException{
         String data = ""; 
         try { 
