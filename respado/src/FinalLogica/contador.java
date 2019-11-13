@@ -121,6 +121,7 @@ public class contador {
         }
         System.out.println("TEXTO a guardar " + textoGuardo);
     }
+<<<<<<< Updated upstream
     String pdf= "";
      public void txt(){
          
@@ -138,6 +139,9 @@ public class contador {
          System.out.println(v);
          
      }
+=======
+ 
+>>>>>>> Stashed changes
      
       Generartxt x=new Generartxt();
    

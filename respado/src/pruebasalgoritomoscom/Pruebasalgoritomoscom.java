@@ -23,7 +23,7 @@ public class Pruebasalgoritomoscom {
         Menú x=new Menú();
         x.setVisible(true);
         contador yosi = new contador();
-        yosi.verificarcantidad("aaabbc");
+        yosi.verificarcantidad("Prohibido");
         yosi.GuardarComprimido();
         yosi.txt();
         yosi.enviar_generadortxt();
