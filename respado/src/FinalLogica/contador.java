@@ -86,10 +86,10 @@ public class contador {
     public void GuardarComprimido(String ruta) throws FileNotFoundException{
         //RandomAccessFile guardar = new RandomAccessFile(ruta+".fer", "rw");
         String cadenaRLE = "";//Ya que si no nos deja concatenar al principio
-        for(int i = 0; i < or.length(); i++){ //recorro cada letra    
+        for(int i = 0; i < or.length(); i++){ //recorro cada letra   
             for(int j = 0; j < misDatos.size(); j ++){//comparo para obtener los valores en 0 y 1
                 if(or.charAt(i) == misDatos.get(j).getSimbolo()){
-                    cadenaRLE = misDatos.get(j).getFormaComprimida();
+                    cadenaRLE = cadenaRLE + misDatos.get(j).getFormaComprimida();
                 }
             }
         }
